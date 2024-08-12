@@ -8,15 +8,18 @@
 #include "storage/free_page_manager.h"
 #include "storage/page.h"
 #include "sync/page_state.h"
+#include "sync/v0/range_lock.hpp"
 
 #include "gtest/gtest_prod.h"
 
 #include <linux/exmap.h>
+#include <sys/mman.h>
 #include <signal.h>
 #include <sys/ioctl.h>
 #include <atomic>
 #include <span>
 #include <vector>
+#include <random>
 
 namespace leanstore {
 // Forward class declaration
@@ -153,6 +156,10 @@ class BufferManager {
   const u64 shalas_no_locks_;     /* Number of locks of `shalas_lk_`, each atomic<u64> manages 64 locks */
   std::unique_ptr<std::atomic<u64>[]> shalas_lk_; /* Range lock impl with Bitmap, each bit corresponds to a block */
   std::vector<std::vector<std::pair<u64, u64>>> shalas_lk_acquired_; /* For UNDO the lock after a successful lock */
+
+  leanstore::ConcurrentRangeLock<u64, 10> crl;
+  uint8_t* mmap;
+  int randomNumber(int n);
 };
 
 }  // namespace leanstore::buffer

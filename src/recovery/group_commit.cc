@@ -26,7 +26,7 @@ GroupCommitExecutor::GroupCommitExecutor(buffer::BufferManager *buffer, LogManag
       worker_states_(FLAGS_worker_count) {
   pthread_setname_np(pthread_self(), "group_committer");
   std::tie(wal_fd_, w_offset_) = buffer_->GetWalInfo();
-  int ret                      = io_uring_queue_init(FLAGS_wal_max_qd, &ring_, IORING_SETUP_SINGLE_ISSUER);
+  int ret                      = io_uring_queue_init(FLAGS_wal_max_qd, &ring_, 0);
   if (ret != 0) { throw std::runtime_error("GroupCommit: io_uring_queue_init error"); }
 }
 
