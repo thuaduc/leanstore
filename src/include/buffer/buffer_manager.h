@@ -158,7 +158,7 @@ class BufferManager {
   std::vector<std::vector<std::pair<u64, u64>>> shalas_lk_acquired_; /* For UNDO the lock after a successful lock */
 
   leanstore::ConcurrentRangeLock<u64, 10> crl;
-  uint8_t* mmap;
+  uint8_t* mmap_x;
   int randomNumber(int n);
 };
 

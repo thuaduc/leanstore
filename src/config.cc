@@ -64,3 +64,7 @@ DEFINE_int32(blob_indexing_variant, 0,
 /* Compression config */
 DEFINE_uint32(zstd_compress_level, 1, "The compression level of ZSTD used in LeanStore");
 DEFINE_uint32(lz4_compress_acceleration, 1, "The acceleration value for LZ4_compress_fast call");
+
+DEFINE_uint32(range_lock_variant, 0, "range lock variant"
+            "0. Optimal bit-range lock"
+            "1. Customized range lock");

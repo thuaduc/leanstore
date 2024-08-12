@@ -6,6 +6,9 @@
 #include <mutex>
 #include <utility>
 
+
+namespace leanstore {
+
 /*
 An AtomicMarkableReference<T> is an object from the java.util.concurrent.atomic
 package that encapsulates both a reference to an object of type T and a Boolean
@@ -137,4 +140,6 @@ template <typename T>
 T *AtomicMarkableReference<T>::getReference() const {
     auto [ref, _] = unpack(atomicRefMark.load(std::memory_order_acquire));
     return ref;
+}
+
 }

@@ -36,3 +36,6 @@ DECLARE_int32(blob_indexing_variant);
 // -----------------------------------------------------------------------------------
 DECLARE_uint32(zstd_compress_level);
 DECLARE_uint32(lz4_compress_acceleration);
+
+
+DECLARE_uint32(range_lock_variant);

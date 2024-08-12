@@ -1,3 +1,5 @@
+#pragma once
+
 #include <atomic>
 #include <cassert>
 #include <climits>
@@ -333,4 +335,5 @@ void ConcurrentRangeLock<T, maxLevel>::displayList() {
         std::cout << "---> tail" << std::endl;
     }
 }
+
 }  // namespace leanstore

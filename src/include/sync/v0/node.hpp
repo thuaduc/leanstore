@@ -6,6 +6,8 @@
 
 #include "./atomic_reference.hpp"
 
+namespace leanstore {
+
 template <typename T>
 class Node {
    public:
@@ -72,4 +74,6 @@ T Node<T>::getStart() const {
 template <typename T>
 T Node<T>::getEnd() const {
     return end;
+}
+
 }
