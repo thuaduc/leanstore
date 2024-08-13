@@ -211,8 +211,9 @@ void BufferManager::Construction() {
   LOG_INFO("VMCache: Path(%s), VirtualGB(%lu), VirtualCount(%lu), PhysGB(%lu), PhysCount(%lu), EvictSize(%lu)",
            FLAGS_db_path.c_str(), virtual_size_ / GB, virtual_cnt_, physical_size_ / GB, physical_cnt_, evict_batch_);
 
-	auto mmapSize = alias_size_ * FLAGS_worker_count + virtual_size_;
+	mmapSize = alias_size_ * FLAGS_worker_count + virtual_size_;
 	mmap_x = &virtual_mem_[virtual_size_ + PAGE_SIZE];
+
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -724,11 +725,11 @@ auto BufferManager::ToggleShalasLocks(bool set_op, u64 &block_start, u64 block_e
   return success;
 }
 
-int BufferManager::randomNumber(int n) {
-    static std::random_device rd;    // Seed with a real random value, if available
-    static std::mt19937 gen(rd());   // Initialize a random number generator with the seed
-    std::uniform_int_distribution<> distrib(1, n); // Define the distribution range [0, n]
-    return distrib(gen); // Generate and return the random number
+u64 BufferManager::randomNumber(int n) {
+    static std::random_device rd;   
+    static std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> distrib(1, n); 
+    return static_cast<u64>(distrib(gen)); 
 }
 
 auto BufferManager::RequestAliasingArea(u64 requested_size) -> pageid_t {
@@ -779,9 +780,14 @@ auto BufferManager::RequestAliasingArea(u64 requested_size) -> pageid_t {
 
   UnreachableCode();
   return 0;  // This is purely to silent the compiler/clang-tidy warning
-  } else  {
+  } 
+  else  {
+    bool try_acquire = false;
+    u64 start, end;
     while (try_acquire == false) {
-      .....
+      start = randomNumber(mmapSize - required_page_cnt);
+      end = required_page_cnt;
+      try_acquire = crl.tryLock(start, start + required_page_cnt);
     }
     shalas_lk_acquired_[worker_thread_id].emplace_back(start, end);
   }
@@ -800,8 +806,8 @@ void BufferManager::ReleaseAliasingArea() {
     shalas_lk_acquired_[worker_thread_id].clear();
   }
   } else  {
-    for (auto &[block_pos, block_cnt] : shalas_lk_acquired_[worker_thread_id]) {
-      release(staqrt, end)
+    for (auto &[start, end] : shalas_lk_acquired_[worker_thread_id]) {
+      crl.releaseLock(start, end);
     }
     shalas_lk_acquired_[worker_thread_id].clear();
   }
