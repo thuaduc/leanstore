@@ -146,6 +146,7 @@ PageAliasGuard::~PageAliasGuard() {
   if (FLAGS_blob_normal_buffer_pool) {
     free(ptr_);
   } else {
+    ExmapAction(exmapfd_, EXMAP_OP_RM_SD, 0);
     buffer_->ReleaseAliasingArea();
   }
 }

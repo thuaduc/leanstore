@@ -805,7 +805,6 @@ auto BufferManager::RequestAliasingArea(u64 requested_size) -> pageid_t {
 
 void BufferManager::ReleaseAliasingArea() {
   if (FLAGS_range_lock_variant == 0) {
-    ExmapAction(exmapfd_, EXMAP_OP_RM_SD, 0);
     if (wl_alias_ptr_[worker_thread_id] > ALIAS_LOCAL_PTR_START(worker_thread_id)) {
       wl_alias_ptr_[worker_thread_id] = ALIAS_LOCAL_PTR_START(worker_thread_id);
     }
