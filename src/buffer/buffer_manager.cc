@@ -725,16 +725,16 @@ auto BufferManager::ToggleShalasLocks(bool set_op, u64 &block_start, u64 block_e
 }
 
 u64 BufferManager::randomNumber(u64 a, u64 b) {
-    static std::random_device rd;   
+    static std::random_device rd;
     static std::mt19937 gen(rd());
-    std::uniform_int_distribution<u64> distrib(a, b); 
+    std::uniform_int_distribution<u64> distrib(a, b);
     return distrib(gen);
 }
 
 
 auto BufferManager::RequestAliasingArea(u64 requested_size) -> pageid_t {
   u64 required_page_cnt = storage::blob::BlobState::PageCount(requested_size);
-  
+
   if (FLAGS_range_lock_variant == 0) {
     // Check if the worker-local aliasing area is big enough for this request
     if (ALIAS_AREA_CAPABLE(wl_alias_ptr_[worker_thread_id] + required_page_cnt, worker_thread_id)) {
@@ -780,8 +780,8 @@ auto BufferManager::RequestAliasingArea(u64 requested_size) -> pageid_t {
 
     UnreachableCode();
     return 0;  // This is purely to silent the compiler/clang-tidy warning
-  } 
-  
+  }
+
   bool try_acquire = false;
 
   u64 pos,start, end;
@@ -792,13 +792,8 @@ auto BufferManager::RequestAliasingArea(u64 requested_size) -> pageid_t {
     try_acquire = crl.tryLock(start, end);
   }
 
-  u64 pid2 = ToPID(&mmap_x[start*alias_pg_cnt_]);
   u64 pid = virtual_cnt_ + 1 + start;
 
-  
-  LOG_INFO("alias_pg_cnt_ %ld pid %ld %ld virtualmem %ld", alias_pg_cnt_, pid, pid2, &mmapSize*alias_pg_cnt_);
-  LOG_INFO("start %ld end %ld", start, end);
-  
   shalas_lk_acquired_[worker_thread_id].emplace_back(start, end);
   return pid;
 }
@@ -814,8 +809,9 @@ void BufferManager::ReleaseAliasingArea() {
       }
       shalas_lk_acquired_[worker_thread_id].clear();
     }
-  } 
-    
+    return;
+  }
+
   for (auto &[start, end] : shalas_lk_acquired_[worker_thread_id]) {
     crl.releaseLock(start, end);
   }

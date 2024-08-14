@@ -66,8 +66,7 @@ set(COMPRESS_LIBS
     sha256
     fsst
     ssl
-    crypto
-    gcrypt)
+    crypto)
 set(CORE_LIBS
     Threads::Threads
     uring
