@@ -159,8 +159,8 @@ class BufferManager {
 
   leanstore::ConcurrentRangeLock<u64, 10> crl;
   leanstore::storage::Page* mmap_x;
-  u64 randomNumber(int n);
-  u64 mmapSize;
+  u64 randomNumber(u64 a, u64 b);
+  u64 aliasing_page_cnt;
 };
 
 }  // namespace leanstore::buffer

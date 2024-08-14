@@ -211,9 +211,8 @@ void BufferManager::Construction() {
   LOG_INFO("VMCache: Path(%s), VirtualGB(%lu), VirtualCount(%lu), PhysGB(%lu), PhysCount(%lu), EvictSize(%lu)",
            FLAGS_db_path.c_str(), virtual_size_ / GB, virtual_cnt_, physical_size_ / GB, physical_cnt_, evict_batch_);
 
-	mmapSize = alias_size_ * FLAGS_worker_count + virtual_size_;
+  aliasing_page_cnt = (alias_size_ * FLAGS_worker_count + virtual_size_)/PAGE_SIZE;
 	mmap_x = &virtual_mem_[virtual_size_ + PAGE_SIZE];
-
 }
 
 // ------------------------------------------------------------------------------------------------------
@@ -725,92 +724,103 @@ auto BufferManager::ToggleShalasLocks(bool set_op, u64 &block_start, u64 block_e
   return success;
 }
 
-u64 BufferManager::randomNumber(int n) {
+u64 BufferManager::randomNumber(u64 a, u64 b) {
     static std::random_device rd;   
     static std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> distrib(1, n); 
-    return static_cast<u64>(distrib(gen)); 
+    std::uniform_int_distribution<u64> distrib(a, b); 
+    return distrib(gen);
 }
+
 
 auto BufferManager::RequestAliasingArea(u64 requested_size) -> pageid_t {
   u64 required_page_cnt = storage::blob::BlobState::PageCount(requested_size);
-
+  
   if (FLAGS_range_lock_variant == 0) {
     // Check if the worker-local aliasing area is big enough for this request
-  if (ALIAS_AREA_CAPABLE(wl_alias_ptr_[worker_thread_id] + required_page_cnt, worker_thread_id)) {
-    auto start_pid = wl_alias_ptr_[worker_thread_id];
-    wl_alias_ptr_[worker_thread_id] += required_page_cnt;
-    return start_pid;
-  }
-
-  // There is no room left in worker-local aliasing area, fallback to shalas, i.e. shared-aliasing area
-  u64 required_block_cnt = std::ceil(static_cast<float>(required_page_cnt) / alias_pg_cnt_);
-  u64 pos;      // Inclusive
-  u64 new_pos;  // Exclusive
-
-  while (true) {
-    // Try to find a batch which is large enough to store `required_page_cnt`,
-    //  i.e. consecutive of blocks which is bigger than `required_block_cnt`
-    bool found_range;
-    do {
-      pos         = shalas_ptr_.load();
-      new_pos     = pos + required_block_cnt;
-      found_range = new_pos <= shalas_no_blocks_;
-      if (new_pos >= shalas_no_blocks_) { new_pos = 0; }
-    } while (!shalas_ptr_.compare_exchange_strong(pos, new_pos));
-
-    // The prev shalas_ptr_ is at the end of the shared-alias area, and there is no room left for the `requested_size`
-    if (!found_range) { continue; }
-    auto end_pos = (new_pos == 0) ? shalas_no_blocks_ : new_pos;
-    Ensure(pos + required_block_cnt == end_pos);
-
-    // Now try to acquire bits in [pos..pos + required_block_cnt)
-    auto start_pos       = pos;
-    auto acquire_success = ToggleShalasLocks(true, start_pos, end_pos);
-
-    // Lock acquisition success, return the start_pid
-    if (acquire_success) {
-      shalas_lk_acquired_[worker_thread_id].emplace_back(pos, required_block_cnt);
-      return ToPID(&shalas_area_[pos * alias_pg_cnt_]);
+    if (ALIAS_AREA_CAPABLE(wl_alias_ptr_[worker_thread_id] + required_page_cnt, worker_thread_id)) {
+      auto start_pid = wl_alias_ptr_[worker_thread_id];
+      wl_alias_ptr_[worker_thread_id] += required_page_cnt;
+      return start_pid;
     }
 
-    // Lock acquisition fail, undo bits [pos..start_pos), and continue trying to acquire a suitable range
-    ToggleShalasLocks(false, pos, start_pos);
-  }
+    // There is no room left in worker-local aliasing area, fallback to shalas, i.e. shared-aliasing area
+    u64 required_block_cnt = std::ceil(static_cast<float>(required_page_cnt) / alias_pg_cnt_);
+    u64 pos;      // Inclusive
+    u64 new_pos;  // Exclusive
 
-  UnreachableCode();
-  return 0;  // This is purely to silent the compiler/clang-tidy warning
+    while (true) {
+      // Try to find a batch which is large enough to store `required_page_cnt`,
+      //  i.e. consecutive of blocks which is bigger than `required_block_cnt`
+      bool found_range;
+      do {
+        pos         = shalas_ptr_.load();
+        new_pos     = pos + required_block_cnt;
+        found_range = new_pos <= shalas_no_blocks_;
+        if (new_pos >= shalas_no_blocks_) { new_pos = 0; }
+      } while (!shalas_ptr_.compare_exchange_strong(pos, new_pos));
+
+      // The prev shalas_ptr_ is at the end of the shared-alias area, and there is no room left for the `requested_size`
+      if (!found_range) { continue; }
+      auto end_pos = (new_pos == 0) ? shalas_no_blocks_ : new_pos;
+      Ensure(pos + required_block_cnt == end_pos);
+
+      // Now try to acquire bits in [pos..pos + required_block_cnt)
+      auto start_pos       = pos;
+      auto acquire_success = ToggleShalasLocks(true, start_pos, end_pos);
+
+      // Lock acquisition success, return the start_pid
+      if (acquire_success) {
+        shalas_lk_acquired_[worker_thread_id].emplace_back(pos, required_block_cnt);
+        return ToPID(&shalas_area_[pos * alias_pg_cnt_]);
+      }
+
+      // Lock acquisition fail, undo bits [pos..start_pos), and continue trying to acquire a suitable range
+      ToggleShalasLocks(false, pos, start_pos);
+    }
+
+    UnreachableCode();
+    return 0;  // This is purely to silent the compiler/clang-tidy warning
   } 
-  else  {
-    bool try_acquire = false;
-    u64 start, end;
-    while (try_acquire == false) {
-      start = randomNumber(mmapSize - required_page_cnt);
-      end = required_page_cnt;
-      try_acquire = crl.tryLock(start, start + required_page_cnt);
-    }
-    shalas_lk_acquired_[worker_thread_id].emplace_back(start, end);
+  
+  bool try_acquire = false;
+
+  u64 pos,start, end;
+  while (try_acquire == false) {
+    pos = shalas_ptr_.load();
+    start = randomNumber(1,  aliasing_page_cnt - required_page_cnt);
+    end = start + required_page_cnt;
+    try_acquire = crl.tryLock(start, end);
   }
+
+  u64 pid2 = ToPID(&mmap_x[start*alias_pg_cnt_]);
+  u64 pid = virtual_cnt_ + 1 + start;
+
+  
+  LOG_INFO("alias_pg_cnt_ %ld pid %ld %ld virtualmem %ld", alias_pg_cnt_, pid, pid2, &mmapSize*alias_pg_cnt_);
+  LOG_INFO("start %ld end %ld", start, end);
+  
+  shalas_lk_acquired_[worker_thread_id].emplace_back(start, end);
+  return pid;
 }
 
 void BufferManager::ReleaseAliasingArea() {
   if (FLAGS_range_lock_variant == 0) {
-  ExmapAction(exmapfd_, EXMAP_OP_RM_SD, 0);
-  if (wl_alias_ptr_[worker_thread_id] > ALIAS_LOCAL_PTR_START(worker_thread_id)) {
-    wl_alias_ptr_[worker_thread_id] = ALIAS_LOCAL_PTR_START(worker_thread_id);
-  }
-  if (!shalas_lk_acquired_[worker_thread_id].empty()) {
-    for (auto &[block_pos, block_cnt] : shalas_lk_acquired_[worker_thread_id]) {
-      Ensure(ToggleShalasLocks(false, block_pos, block_pos + block_cnt));
+    ExmapAction(exmapfd_, EXMAP_OP_RM_SD, 0);
+    if (wl_alias_ptr_[worker_thread_id] > ALIAS_LOCAL_PTR_START(worker_thread_id)) {
+      wl_alias_ptr_[worker_thread_id] = ALIAS_LOCAL_PTR_START(worker_thread_id);
     }
-    shalas_lk_acquired_[worker_thread_id].clear();
-  }
-  } else  {
-    for (auto &[start, end] : shalas_lk_acquired_[worker_thread_id]) {
-      crl.releaseLock(start, end);
+    if (!shalas_lk_acquired_[worker_thread_id].empty()) {
+      for (auto &[block_pos, block_cnt] : shalas_lk_acquired_[worker_thread_id]) {
+        Ensure(ToggleShalasLocks(false, block_pos, block_pos + block_cnt));
+      }
+      shalas_lk_acquired_[worker_thread_id].clear();
     }
-    shalas_lk_acquired_[worker_thread_id].clear();
+  } 
+    
+  for (auto &[start, end] : shalas_lk_acquired_[worker_thread_id]) {
+    crl.releaseLock(start, end);
   }
+   shalas_lk_acquired_[worker_thread_id].clear();
 }
 
 // ------------------------------------------------------------------------------------------------------
