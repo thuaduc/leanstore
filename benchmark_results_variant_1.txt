@@ -1,414 +1,414 @@
-13:21:25 (4745) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:21:25 (4745) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:21:25 (4745) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9770 GB
-Halt LeanStore's GroupCommit thread
+13:57:15 (12634) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:57:15 (12634) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:57:16 (12634) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9770 GB
 Halt LeanStore's Profiling thread
-13:21:35 (4745) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 302713 - Space used: 0.9770 GB - WAL size: 0.0361 GB
+Halt LeanStore's GroupCommit thread
+13:57:26 (12634) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 300757 - Space used: 0.9770 GB - WAL size: 0.0359 GB
     cycle,   kcycle,     instr,  L1-miss, br-miss,     task,  scale,  IPC,  CPU,  GHz 
-179335.20, 41643.48, 125138.76, 34057.47,  975.72, 33389.62, 302713, 0.70, 1.01, 5.37 
+178073.81, 42427.32, 125245.81, 34033.61,  976.55, 33633.85, 300757, 0.70, 1.01, 5.29 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=1 ---
 
 
-13:21:35 (4817) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:21:36 (4817) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:21:36 (4817) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9770 GB
-Halt LeanStore's Profiling thread
+13:57:26 (12678) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:57:26 (12678) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:57:26 (12678) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9770 GB
 Halt LeanStore's GroupCommit thread
-13:21:46 (4817) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 478807 - Space used: 0.9770 GB - WAL size: 0.0655 GB
+Halt LeanStore's Profiling thread
+13:57:36 (12678) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 471537 - Space used: 0.9770 GB - WAL size: 0.0650 GB
     cycle,   kcycle,     instr,  L1-miss, br-miss,     task,  scale,  IPC,  CPU,  GHz 
-226378.69, 54027.65, 126402.08, 33893.06, 1012.53, 42050.84, 478807, 0.56, 2.01, 5.38 
+230724.64, 54928.89, 126427.75, 33899.91, 1014.13, 42710.75, 471537, 0.55, 2.01, 5.40 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=2 ---
 
 
-13:21:46 (4846) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:21:46 (4846) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:21:46 (4846) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
-Halt LeanStore's GroupCommit thread
+13:57:37 (12705) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:57:37 (12705) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:57:37 (12705) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9770 GB
 Halt LeanStore's Profiling thread
-13:21:56 (4846) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 559648 - Space used: 0.9769 GB - WAL size: 0.0899 GB
+Halt LeanStore's GroupCommit thread
+13:57:47 (12705) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 547208 - Space used: 0.9770 GB - WAL size: 0.0892 GB
     cycle,   kcycle,     instr,  L1-miss, br-miss,     task,  scale,  IPC,  CPU,  GHz 
-292414.09, 62056.98, 127589.61, 33829.75, 1049.66, 53910.46, 559648, 0.44, 3.02, 5.42 
+294252.10, 63443.41, 127629.78, 33856.52, 1050.03, 55218.34, 547208, 0.43, 3.02, 5.33 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=3 ---
 
 
-13:21:56 (4875) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:21:56 (4875) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:21:56 (4875) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9770 GB
+13:57:47 (12734) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:57:47 (12734) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:57:47 (12734) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
 Halt LeanStore's Profiling thread
-13:22:06 (4875) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 591130 - Space used: 0.9770 GB - WAL size: 0.1110 GB
+13:57:57 (12734) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 588783 - Space used: 0.9769 GB - WAL size: 0.1077 GB
     cycle,   kcycle,     instr,  L1-miss, br-miss,     task,  scale,  IPC,  CPU,  GHz 
-367433.77, 73343.28, 128699.18, 33843.29, 1085.05, 68106.62, 591130, 0.35, 4.03, 5.39 
+365847.75, 73025.84, 128608.52, 33834.54, 1081.45, 68228.26, 588783, 0.35, 4.02, 5.36 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=4 ---
 
 
-13:22:07 (4906) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:22:07 (4906) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:22:07 (4906) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+13:57:57 (12765) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:57:57 (12765) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:57:57 (12765) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's Profiling thread
 Halt LeanStore's GroupCommit thread
-13:22:17 (4906) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 612393 - Space used: 0.9769 GB - WAL size: 0.1353 GB
+13:58:07 (12765) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 610620 - Space used: 0.9769 GB - WAL size: 0.1337 GB
     cycle,   kcycle,     instr,  L1-miss, br-miss,     task,  scale,  IPC,  CPU,  GHz 
-441422.72, 84861.62, 129797.39, 33847.23, 1116.10, 81922.47, 612393, 0.29, 5.02, 5.39 
+435679.37, 86412.27, 129859.55, 33874.66, 1117.56, 82222.17, 610620, 0.30, 5.02, 5.30 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=5 ---
 
 
-13:22:17 (4933) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:22:17 (4933) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:22:17 (4933) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+13:58:08 (12798) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:58:08 (12798) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:58:08 (12798) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's Profiling thread
 Halt LeanStore's GroupCommit thread
-13:22:27 (4933) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 629822 - Space used: 0.9769 GB - WAL size: 0.1573 GB
+13:58:18 (12798) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 628176 - Space used: 0.9769 GB - WAL size: 0.1566 GB
     cycle,   kcycle,     instr,  L1-miss, br-miss,     task,  scale,  IPC,  CPU,  GHz 
-512636.90, 98144.84, 130964.42, 33897.64, 1150.15, 95462.24, 629822, 0.26, 6.01, 5.37 
+513247.69, 98069.11, 130937.18, 33889.14, 1148.98, 95729.64, 628176, 0.26, 6.01, 5.36 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=6 ---
 
 
-13:22:27 (4962) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:22:27 (4962) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:22:27 (4962) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+13:58:18 (12834) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:58:18 (12834) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:58:18 (12834) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's Profiling thread
 Halt LeanStore's GroupCommit thread
-13:22:37 (4962) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 622871 - Space used: 0.9769 GB - WAL size: 0.1798 GB
+13:58:28 (12834) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 636544 - Space used: 0.9769 GB - WAL size: 0.1805 GB
     cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,  CPU,  GHz 
-524418.79, 103378.07, 132174.63, 33953.12, 1183.24, 112242.61, 622871, 0.25, 6.99, 4.67 
+586926.79, 113014.82, 132186.21, 33933.18, 1185.21, 109950.97, 636544, 0.23, 7.00, 5.34 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=7 ---
 
 
-13:22:37 (4994) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:22:38 (4994) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:22:38 (4994) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+13:58:28 (12871) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:58:28 (12871) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:58:28 (12871) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's Profiling thread
 Halt LeanStore's GroupCommit thread
-13:22:48 (4994) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 642107 - Space used: 0.9769 GB - WAL size: 0.2030 GB
+13:58:38 (12871) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 641175 - Space used: 0.9769 GB - WAL size: 0.2020 GB
     cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,  CPU,  GHz 
-667578.84, 127204.30, 133277.35, 33981.23, 1214.96, 124321.40, 642107, 0.20, 7.98, 5.37 
+663784.84, 129674.93, 133315.01, 33998.46, 1215.92, 124644.84, 641175, 0.20, 7.99, 5.33 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=8 ---
 
 
-13:22:48 (5027) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:22:48 (5027) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:22:48 (5027) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+13:58:38 (12911) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:58:39 (12911) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:58:39 (12911) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's Profiling thread
 Halt LeanStore's GroupCommit thread
-13:22:58 (5027) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 641370 - Space used: 0.9769 GB - WAL size: 0.2236 GB
+13:58:49 (12911) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 640345 - Space used: 0.9769 GB - WAL size: 0.2236 GB
     cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,  CPU,  GHz 
-748223.68, 144047.60, 134413.99, 34004.60, 1244.56, 139961.01, 641370, 0.18, 8.98, 5.35 
+746830.47, 142918.63, 134425.84, 34005.33, 1245.79, 140073.53, 640345, 0.18, 8.97, 5.33 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=9 ---
 
 
-13:22:58 (5062) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:22:58 (5062) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:22:58 (5062) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+13:58:49 (12952) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:58:49 (12952) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:58:49 (12952) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
 Halt LeanStore's Profiling thread
-13:23:08 (5062) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 642723 - Space used: 0.9769 GB - WAL size: 0.2435 GB
+13:58:59 (12952) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 642917 - Space used: 0.9769 GB - WAL size: 0.2451 GB
     cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,  CPU,  GHz 
-821600.40, 158351.29, 135580.42, 34047.03, 1275.22, 154521.48, 642723, 0.17, 9.93, 5.32 
+821506.81, 159563.65, 135505.13, 34045.81, 1272.71, 154554.84, 642917, 0.16, 9.94, 5.32 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=10 ---
 
 
-13:23:08 (5099) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:23:08 (5099) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:23:09 (5099) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+13:58:59 (12989) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:58:59 (12989) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:58:59 (12989) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
 Halt LeanStore's Profiling thread
-13:23:19 (5099) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 643138 - Space used: 0.9769 GB - WAL size: 0.2638 GB
+13:59:09 (12989) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 643674 - Space used: 0.9769 GB - WAL size: 0.2677 GB
     cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-857891.05, 170944.34, 136673.95, 34085.41, 1302.46, 168764.95, 643138, 0.16, 10.85, 5.08 
+898421.64, 177704.06, 136652.29, 34083.07, 1302.23, 168991.57, 643674, 0.15, 10.88, 5.32 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=11 ---
 
 
-13:23:19 (5138) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:23:19 (5138) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:23:19 (5138) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
-Halt LeanStore's GroupCommit thread
+13:59:09 (13028) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:59:09 (13028) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:59:10 (13028) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's Profiling thread
-13:23:29 (5138) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 644046 - Space used: 0.9769 GB - WAL size: 0.2827 GB
+Halt LeanStore's GroupCommit thread
+13:59:20 (13028) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 641663 - Space used: 0.9769 GB - WAL size: 0.2823 GB
     cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-975955.59, 192997.01, 137727.67, 34130.27, 1329.53, 183662.26, 644046, 0.14, 11.83, 5.31 
+982119.67, 197184.50, 137810.69, 34135.84, 1328.60, 184760.87, 641663, 0.14, 11.85, 5.32 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=12 ---
 
 
-13:23:29 (5191) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:23:29 (5191) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:23:29 (5191) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
-Halt LeanStore's GroupCommit thread
+13:59:20 (13069) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:59:20 (13069) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:59:20 (13069) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's Profiling thread
-13:23:39 (5191) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 640462 - Space used: 0.9769 GB - WAL size: 0.2830 GB
+Halt LeanStore's GroupCommit thread
+13:59:30 (13069) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 641096 - Space used: 0.9769 GB - WAL size: 0.2955 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-1039236.33, 213191.22, 138937.37, 34193.17, 1356.11, 199358.70, 640462, 0.13, 12.77, 5.21 
+1049638.12, 211241.90, 138763.02, 34181.40, 1354.67, 199626.54, 641096, 0.13, 12.80, 5.26 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=13 ---
 
 
-13:23:39 (5240) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:23:39 (5240) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:23:39 (5240) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
-Halt LeanStore's Profiling thread
+13:59:30 (13112) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:59:30 (13112) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:59:30 (13112) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
-13:23:49 (5240) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 640095 - Space used: 0.9769 GB - WAL size: 0.3108 GB
+Halt LeanStore's Profiling thread
+13:59:40 (13112) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 638846 - Space used: 0.9769 GB - WAL size: 0.3129 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-1128275.39, 235683.53, 139813.70, 34234.71, 1372.82, 214018.93, 640095, 0.12, 13.70, 5.27 
+1133855.08, 235754.06, 139910.55, 34215.68, 1377.26, 214474.63, 638846, 0.12, 13.70, 5.29 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=14 ---
 
 
-13:23:50 (5285) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:23:50 (5285) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:23:50 (5285) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+13:59:40 (13157) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:59:40 (13157) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:59:40 (13157) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
 Halt LeanStore's Profiling thread
-13:24:00 (5285) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 638802 - Space used: 0.9769 GB - WAL size: 0.3133 GB
+13:59:50 (13157) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 637108 - Space used: 0.9769 GB - WAL size: 0.3240 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-1211711.66, 257881.41, 140736.18, 34258.43, 1397.51, 229324.99, 638802, 0.12, 14.65, 5.28 
+1214467.31, 255183.84, 140835.79, 34246.81, 1397.69, 229911.68, 637108, 0.12, 14.65, 5.28 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=15 ---
 
 
-13:24:00 (5332) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:24:00 (5332) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:24:00 (5332) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
-Halt LeanStore's GroupCommit thread
+13:59:51 (13204) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+13:59:51 (13204) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+13:59:51 (13204) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's Profiling thread
-13:24:10 (5332) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 637163 - Space used: 0.9769 GB - WAL size: 0.3397 GB
+Halt LeanStore's GroupCommit thread
+14:00:01 (13204) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 637001 - Space used: 0.9769 GB - WAL size: 0.3305 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-1285279.27, 276367.43, 141584.10, 34294.81, 1414.40, 243802.08, 637163, 0.11, 15.53, 5.27 
+1281918.26, 275498.72, 141685.21, 34298.58, 1415.17, 243408.97, 637001, 0.11, 15.50, 5.27 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=16 ---
 
 
-13:24:10 (5381) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:24:10 (5381) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:24:10 (5381) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
-Halt LeanStore's Profiling thread
+14:00:01 (13253) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:00:01 (13253) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:00:01 (13253) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
-13:24:20 (5381) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 633626 - Space used: 0.9769 GB - WAL size: 0.3455 GB
+Halt LeanStore's Profiling thread
+14:00:11 (13253) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 635119 - Space used: 0.9769 GB - WAL size: 0.3404 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-1365229.90, 297766.26, 142725.54, 34377.69, 1437.25, 259064.72, 633626, 0.10, 16.41, 5.27 
+1359366.37, 295897.12, 142665.18, 34374.57, 1437.55, 258240.21, 635119, 0.10, 16.40, 5.26 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=17 ---
 
 
-13:24:20 (5432) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:24:21 (5432) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:24:21 (5432) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
-Halt LeanStore's Profiling thread
+14:00:11 (13304) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:00:11 (13304) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:00:11 (13304) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
-13:24:31 (5432) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 633109 - Space used: 0.9769 GB - WAL size: 0.3645 GB
+Halt LeanStore's Profiling thread
+14:00:21 (13304) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 632647 - Space used: 0.9769 GB - WAL size: 0.3630 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-1436589.45, 316299.91, 143533.82, 34429.79, 1457.82, 273005.28, 633109, 0.10, 17.28, 5.26 
+1434527.74, 317406.22, 143449.69, 34439.08, 1453.57, 272816.41, 632647, 0.10, 17.26, 5.26 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=18 ---
 
 
-13:24:31 (5485) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:24:31 (5485) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:24:31 (5485) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+14:00:21 (13357) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:00:21 (13357) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:00:22 (13357) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
 Halt LeanStore's Profiling thread
-13:24:41 (5485) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 631413 - Space used: 0.9769 GB - WAL size: 0.3810 GB
+14:00:32 (13357) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 631152 - Space used: 0.9769 GB - WAL size: 0.3770 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-1508774.75, 334702.57, 144358.02, 34506.88, 1473.06, 286949.62, 631413, 0.10, 18.12, 5.26 
+1509387.82, 337745.23, 144387.76, 34494.06, 1474.48, 287354.78, 631152, 0.10, 18.13, 5.25 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=19 ---
 
 
-13:24:41 (5540) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:24:41 (5540) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:24:41 (5540) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
-Halt LeanStore's Profiling thread
+14:00:32 (13412) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:00:32 (13412) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:00:32 (13412) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
-13:24:51 (5540) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 630232 - Space used: 0.9769 GB - WAL size: 0.3891 GB
+Halt LeanStore's Profiling thread
+14:00:42 (13412) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 631288 - Space used: 0.9769 GB - WAL size: 0.3786 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-1582633.45, 358099.57, 145119.39, 34569.51, 1487.36, 301332.30, 630232, 0.09, 18.99, 5.25 
+1574676.20, 357392.74, 145151.20, 34570.54, 1488.39, 300040.38, 631288, 0.09, 18.94, 5.25 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=20 ---
 
 
-13:24:51 (5597) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:24:51 (5597) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:24:51 (5597) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
-Halt LeanStore's GroupCommit thread
+14:00:42 (13469) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:00:42 (13469) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:00:42 (13469) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's Profiling thread
-13:25:01 (5597) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 630699 - Space used: 0.9769 GB - WAL size: 0.3883 GB
+Halt LeanStore's GroupCommit thread
+14:00:52 (13469) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 627826 - Space used: 0.9769 GB - WAL size: 0.4077 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-1643528.24, 378961.65, 146095.84, 34628.50, 1506.88, 313264.91, 630699, 0.09, 19.76, 5.25 
+1657414.20, 376703.35, 146099.70, 34642.01, 1507.91, 315891.81, 627826, 0.09, 19.83, 5.25 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=21 ---
 
 
-13:25:02 (5659) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:25:02 (5659) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:25:02 (5659) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
-Halt LeanStore's Profiling thread
+14:00:52 (13528) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:00:52 (13528) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:00:52 (13528) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
-13:25:12 (5659) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 626622 - Space used: 0.9769 GB - WAL size: 0.4096 GB
+Halt LeanStore's Profiling thread
+14:01:02 (13528) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 626325 - Space used: 0.9769 GB - WAL size: 0.4198 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-1724252.18, 394800.59, 146908.75, 34686.67, 1523.72, 328647.13, 626622, 0.09, 20.59, 5.25 
+1727046.19, 394723.45, 146988.02, 34692.05, 1527.35, 329161.92, 626325, 0.09, 20.61, 5.25 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=22 ---
 
 
-13:25:12 (5721) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:25:12 (5721) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:25:12 (5721) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+14:01:03 (13589) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:01:03 (13589) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:01:03 (13589) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
 Halt LeanStore's Profiling thread
-13:25:22 (5721) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 624693 - Space used: 0.9769 GB - WAL size: 0.4218 GB
+14:01:13 (13589) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 624990 - Space used: 0.9769 GB - WAL size: 0.4348 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-1797218.58, 415682.43, 147780.92, 34744.54, 1541.08, 342663.11, 624693, 0.08, 21.40, 5.24 
+1798735.43, 414046.55, 147782.50, 34759.52, 1543.38, 343104.36, 624990, 0.08, 21.44, 5.24 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=23 ---
 
 
-13:25:22 (5784) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:25:22 (5784) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:25:22 (5784) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+14:01:13 (13652) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:01:13 (13652) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:01:13 (13652) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
 Halt LeanStore's Profiling thread
-13:25:32 (5784) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 624110 - Space used: 0.9769 GB - WAL size: 0.4400 GB
+14:01:23 (13652) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 624139 - Space used: 0.9769 GB - WAL size: 0.4223 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-1863740.97, 431008.73, 148658.69, 34805.85, 1561.73, 355457.81, 624110, 0.08, 22.18, 5.24 
+1871105.21, 435839.33, 148568.63, 34808.75, 1556.39, 357091.30, 624139, 0.08, 22.28, 5.24 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=24 ---
 
 
-13:25:33 (5850) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:25:33 (5850) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:25:33 (5850) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+14:01:23 (13717) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:01:23 (13717) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:01:23 (13717) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
 Halt LeanStore's Profiling thread
-13:25:43 (5850) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 620232 - Space used: 0.9769 GB - WAL size: 0.4340 GB
+14:01:33 (13717) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 621827 - Space used: 0.9769 GB - WAL size: 0.4388 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-1944809.62, 450533.85, 149547.30, 34857.77, 1577.24, 371029.00, 620232, 0.08, 23.01, 5.24 
+1940308.42, 454116.87, 149540.79, 34858.25, 1575.80, 370593.43, 621827, 0.08, 23.04, 5.24 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=25 ---
 
 
-13:25:43 (5923) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:25:43 (5923) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:25:43 (5923) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+14:01:33 (13785) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:01:34 (13785) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:01:34 (13785) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's Profiling thread
 Halt LeanStore's GroupCommit thread
-13:25:53 (5923) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 618685 - Space used: 0.9769 GB - WAL size: 0.4383 GB
+14:01:44 (13785) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 616851 - Space used: 0.9769 GB - WAL size: 0.4278 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-2013358.39, 471219.13, 150368.63, 34914.77, 1591.45, 384330.32, 618685, 0.07, 23.77, 5.24 
+2012642.34, 472368.71, 150437.96, 34922.24, 1590.10, 384742.71, 616851, 0.07, 23.73, 5.23 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=26 ---
 
 
-13:25:53 (6020) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:25:53 (6020) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:25:53 (6020) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+14:01:44 (13854) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:01:44 (13854) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:01:44 (13854) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
 Halt LeanStore's Profiling thread
-13:26:03 (6020) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 617161 - Space used: 0.9769 GB - WAL size: 0.4599 GB
+14:01:54 (13854) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 613842 - Space used: 0.9769 GB - WAL size: 0.4445 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-2087714.01, 487247.78, 151215.21, 34971.83, 1605.78, 398714.68, 617161, 0.07, 24.60, 5.24 
+2095629.70, 493296.50, 151192.86, 34973.83, 1605.76, 400682.48, 613842, 0.07, 24.59, 5.23 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=27 ---
 
 
-13:26:03 (6097) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:26:03 (6097) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:26:04 (6097) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
-Halt LeanStore's Profiling thread
+14:01:54 (13925) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:01:54 (13925) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:01:54 (13925) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
-13:26:14 (6097) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 610859 - Space used: 0.9769 GB - WAL size: 0.4574 GB
+Halt LeanStore's Profiling thread
+14:02:04 (13925) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 610942 - Space used: 0.9769 GB - WAL size: 0.4629 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-2171220.21, 504857.88, 152007.12, 35026.09, 1618.63, 415072.71, 610859, 0.07, 25.35, 5.23 
+2171969.43, 503923.89, 152073.46, 35014.35, 1621.47, 415325.12, 610942, 0.07, 25.37, 5.23 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=28 ---
 
 
-13:26:14 (6177) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:26:14 (6177) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:26:14 (6177) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
-Halt LeanStore's Profiling thread
+14:02:04 (14001) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:02:04 (14001) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:02:04 (14001) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
-13:26:24 (6177) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 604153 - Space used: 0.9769 GB - WAL size: 0.4643 GB
+Halt LeanStore's Profiling thread
+14:02:15 (14001) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 606222 - Space used: 0.9769 GB - WAL size: 0.4726 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-2260157.31, 526426.35, 152953.63, 35068.98, 1634.17, 432165.74, 604153, 0.07, 26.10, 5.23 
+2257331.56, 522035.38, 152910.61, 35058.76, 1638.33, 431776.43, 606222, 0.07, 26.17, 5.23 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=29 ---
 
 
-13:26:24 (6255) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:26:24 (6255) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:26:24 (6255) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+14:02:15 (14077) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:02:15 (14077) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:02:15 (14077) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
 Halt LeanStore's Profiling thread
-13:26:34 (6255) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 603265 - Space used: 0.9769 GB - WAL size: 0.4836 GB
+14:02:25 (14077) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 604376 - Space used: 0.9769 GB - WAL size: 0.4913 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-2331671.52, 540008.95, 153762.11, 35108.80, 1654.29, 446073.67, 603265, 0.07, 26.90, 5.23 
+2328473.04, 539058.31, 153737.17, 35102.48, 1653.39, 445580.22, 604376, 0.07, 26.93, 5.23 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=30 ---
 
 
-13:26:34 (6333) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:26:34 (6333) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:26:34 (6333) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+14:02:25 (14155) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:02:25 (14155) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:02:25 (14155) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
 Halt LeanStore's Profiling thread
-13:26:44 (6333) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 597450 - Space used: 0.9769 GB - WAL size: 0.4857 GB
+14:02:35 (14155) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 595567 - Space used: 0.9769 GB - WAL size: 0.4970 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-2415072.09, 551767.99, 155110.75, 35171.90, 1686.18, 462031.71, 597450, 0.06, 27.60, 5.23 
+2428308.35, 547802.28, 155067.33, 35163.07, 1682.89, 464820.64, 595567, 0.06, 27.67, 5.22 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=31 ---
 
 
-13:26:45 (6413) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
-13:26:45 (6413) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
-13:26:45 (6413) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
+14:02:35 (14235) [resident_set.cc:22:ResidentPageSet] DEBUG - Initialize replacer with 16777216 slots
+14:02:35 (14235) [buffer_manager.cc:215:Construction] INFO  - VMCache: Path(/blk/s0), VirtualGB(128), VirtualCount(33554432), PhysGB(32), PhysCount(8388608), EvictSize(64)
+14:02:35 (14235) [leanstore_ycsb.cc:68:main] INFO  - Space used: 0.9769 GB
 Halt LeanStore's GroupCommit thread
 Halt LeanStore's Profiling thread
-13:26:55 (6413) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 553159 - Space used: 0.9769 GB - WAL size: 0.3457 GB
+14:02:45 (14235) [leanstore_ycsb.cc:100:main] INFO  - Total completed txn 554455 - Space used: 0.9769 GB - WAL size: 0.3389 GB
      cycle,    kcycle,     instr,  L1-miss, br-miss,      task,  scale,  IPC,   CPU,  GHz 
-2628977.53, 574442.68, 159620.81, 35312.96, 1786.29, 502554.28, 553159, 0.06, 27.78, 5.23 
+2623235.57, 571465.64, 159385.50, 35307.39, 1779.70, 501967.28, 554455, 0.06, 27.82, 5.23 
 
 
 --- End of benchmark for range_lock_variant=1 and worker_count=32 ---
