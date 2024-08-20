@@ -103,7 +103,8 @@ BufferManager::BufferManager(std::atomic<bool> &keep_running, storage::FreePageM
       page_state_(static_cast<sync::PageState *>(AllocHuge(virtual_cnt_ * sizeof(sync::PageState)))),
       resident_set_(physical_cnt_, page_state_),
       shalas_no_blocks_(virtual_cnt_ / alias_pg_cnt_),
-      shalas_no_locks_(std::ceil(static_cast<float>(shalas_no_blocks_) / NO_BLOCKS_PER_LOCK)) {
+      shalas_no_locks_(std::ceil(static_cast<float>(shalas_no_blocks_) / NO_BLOCKS_PER_LOCK)),
+      srl(FLAGS_worker_count) {
   Construction();
 }
 
@@ -121,7 +122,8 @@ BufferManager::BufferManager(u64 virtual_page_count, u64 physical_page_count, u6
       page_state_(static_cast<sync::PageState *>(AllocHuge(virtual_cnt_ * sizeof(sync::PageState)))),
       resident_set_(physical_cnt_, page_state_),
       shalas_no_blocks_(virtual_cnt_ / alias_pg_cnt_),
-      shalas_no_locks_(std::ceil(static_cast<float>(shalas_no_blocks_) / NO_BLOCKS_PER_LOCK)) {
+      shalas_no_locks_(std::ceil(static_cast<float>(shalas_no_blocks_) / NO_BLOCKS_PER_LOCK)),
+      srl(FLAGS_worker_count) {
   Construction();
 }
 
@@ -196,6 +198,8 @@ void BufferManager::Construction() {
   shalas_area_ = &virtual_mem_[ALIAS_LOCAL_PTR_START(FLAGS_worker_count)];
   shalas_lk_   = std::make_unique<std::atomic<u64>[]>(shalas_no_locks_);
   shalas_lk_acquired_.resize(FLAGS_worker_count);
+  shalas_lk_acquired_v2.resize(FLAGS_worker_count);
+
 
   // Init page_state and buffer frames
   for (size_t idx = 0; idx < virtual_cnt_; idx++) { page_state_[idx].Init(); }
@@ -780,22 +784,51 @@ auto BufferManager::RequestAliasingArea(u64 requested_size) -> pageid_t {
 
     UnreachableCode();
     return 0;  // This is purely to silent the compiler/clang-tidy warning
+  } else if (FLAGS_range_lock_variant == 1) {
+    bool try_acquire = false;
+
+    u64 start, end;
+    while (try_acquire == false) {
+      start = randomNumber(1,  aliasing_page_cnt - required_page_cnt);
+      end = start + required_page_cnt;
+      try_acquire = crl.tryLock(start, end);
+    }
+
+    u64 pid = virtual_cnt_ + 1 + start;
+
+    shalas_lk_acquired_[worker_thread_id].emplace_back(start, end);
+    return pid;
+  } else if (FLAGS_range_lock_variant == 2) {
+    u64 start, end;
+    RangeLock* rl;
+    
+    while (true) {
+      start = randomNumber(1,  aliasing_page_cnt - required_page_cnt);
+      end = start + required_page_cnt;
+      rl = leanstore::MutexRangeAcquire(&list_of_rangelock, start, end);
+      if (rl != nullptr) {
+        break;
+      }
+    }
+
+    u64 pid = virtual_cnt_ + 1 + start;
+
+    shalas_lk_acquired_v2[worker_thread_id].emplace_back(rl);
+    return pid;
+  } else {
+    bool try_acquire = false;
+
+    u64 start, end;
+    while (try_acquire == false) {
+      start = randomNumber(1,  aliasing_page_cnt - required_page_cnt);
+      try_acquire = srl.TryLockRange(start, required_page_cnt);
+    }
+
+    u64 pid = virtual_cnt_ + 1 + start;
+
+    shalas_lk_acquired_[worker_thread_id].emplace_back(start, 0);
+    return pid;
   }
-
-  bool try_acquire = false;
-
-  u64 pos,start, end;
-  while (try_acquire == false) {
-    pos = shalas_ptr_.load();
-    start = randomNumber(1,  aliasing_page_cnt - required_page_cnt);
-    end = start + required_page_cnt;
-    try_acquire = crl.tryLock(start, end);
-  }
-
-  u64 pid = virtual_cnt_ + 1 + start;
-
-  shalas_lk_acquired_[worker_thread_id].emplace_back(start, end);
-  return pid;
 }
 
 void BufferManager::ReleaseAliasingArea() {
@@ -810,11 +843,20 @@ void BufferManager::ReleaseAliasingArea() {
       shalas_lk_acquired_[worker_thread_id].clear();
     }
     return;
+  } else if (FLAGS_range_lock_variant == 1) {
+    for (auto &[start, end] : shalas_lk_acquired_[worker_thread_id]) {
+      crl.releaseLock(start, end);
+    }
+  } else if (FLAGS_range_lock_variant == 2) {
+     for (auto &rl : shalas_lk_acquired_v2[worker_thread_id]) {
+      leanstore::MutexRangeRelease(&list_of_rangelock, rl);
+    }
+  } else {
+    for (auto &[start, _] : shalas_lk_acquired_[worker_thread_id]) {
+      srl.UnlockRange(start);
+    }
   }
 
-  for (auto &[start, end] : shalas_lk_acquired_[worker_thread_id]) {
-    crl.releaseLock(start, end);
-  }
    shalas_lk_acquired_[worker_thread_id].clear();
 }
 

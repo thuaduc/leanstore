@@ -119,7 +119,7 @@ void LeanStore::StartProfilingThread() {
   start_profiling = true;
   stat_collector  = std::thread([&]() {
     pthread_setname_np(pthread_self(), "stats_collector");
-    std::printf("ts,tx,bm_rmb,bm_wmb,bm_evict,blob_io_mb,logio_mb,db_size,alloc_size,mem_mb\n");
+    //std::printf("ts,tx,bm_rmb,bm_wmb,bm_evict,blob_io_mb,logio_mb,db_size,alloc_size,mem_mb\n");
     float r_mb;
     float w_mb;
     u64 e_cnt;
@@ -142,8 +142,8 @@ void LeanStore::StartProfilingThread() {
       // System stats
       auto mem_mb = static_cast<float>(getPeakRSS()) / MB;
       // Output
-      std::printf("%lu,%lu,%.4f,%.4f,%lu,%.2f,%.4f,%.4f,%.4f,%.4f\n", cnt++, progress, r_mb, w_mb, e_cnt, blob_io,
-                   log_write, db_sz, alloc_sz, mem_mb);
+      // std::printf("%lu,%lu,%.4f,%.4f,%lu,%.2f,%.4f,%.4f,%.4f,%.4f\n", cnt++, progress, r_mb, w_mb, e_cnt, blob_io,
+      //              log_write, db_sz, alloc_sz, mem_mb);
     }
     std::printf("Halt LeanStore's Profiling thread\n");
   });

@@ -9,6 +9,9 @@
 #include "storage/page.h"
 #include "sync/page_state.h"
 #include "sync/v0/range_lock.hpp"
+#include "sync/v2/range_lock.hpp"
+#include "sync/range_lock.h"
+
 
 #include "gtest/gtest_prod.h"
 
@@ -155,12 +158,21 @@ class BufferManager {
   const u64 shalas_no_blocks_;    /* Number of blocks in shared aliasing area, every block is as big as alias_size_ */
   const u64 shalas_no_locks_;     /* Number of locks of `shalas_lk_`, each atomic<u64> manages 64 locks */
   std::unique_ptr<std::atomic<u64>[]> shalas_lk_; /* Range lock impl with Bitmap, each bit corresponds to a block */
-  std::vector<std::vector<std::pair<u64, u64>>> shalas_lk_acquired_; /* For UNDO the lock after a successful lock */
+  std::vector<std::vector<std::pair<u64, u64>>> shalas_lk_acquired_; /* For UNDO the lock after a successful lock 
+  */
+
 
   leanstore::ConcurrentRangeLock<u64, 10> crl;
   leanstore::storage::Page* mmap_x;
   u64 randomNumber(u64 a, u64 b);
   u64 aliasing_page_cnt;
+  
+  
+  leanstore::ListRL list_of_rangelock{};
+  sync::SongRangeLock srl;
+  std::vector<std::vector<leanstore::RangeLock*>> shalas_lk_acquired_v2;
+  /* For UNDO the lock after a successful lock 
+  for range lock v2 */
 };
 
 }  // namespace leanstore::buffer

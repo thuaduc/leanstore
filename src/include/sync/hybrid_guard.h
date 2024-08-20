@@ -6,22 +6,21 @@
 
 namespace leanstore::sync {
 
-enum class GuardMode { OPTIMISTIC, SHARED, EXCLUSIVE, MOVED };
+enum class GuardMode : u8 { OPTIMISTIC, SHARED, EXCLUSIVE, ADOPT_EXCLUSIVE, MOVED };
 
 class HybridGuard {
  public:
   HybridGuard(HybridLatch *latch, GuardMode mode);
   HybridGuard(HybridGuard &&other) noexcept;
-  HybridGuard(const HybridGuard &) = delete;  // No COPY constructor
+  auto operator=(HybridGuard &&other) noexcept(false) -> HybridGuard &;
   ~HybridGuard() noexcept(false);
 
   void OptimisticLock();
   void Unlock();
   void ValidateOptimisticLock();
+  void UpgradeOptimisticToExclusive();
 
  private:
-  FRIEND_TEST(TestGuard, UpgradeSharedToExclusive);
-
   HybridLatch *latch_;
   GuardMode mode_;
   u64 state_{0};

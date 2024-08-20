@@ -67,4 +67,6 @@ DEFINE_uint32(lz4_compress_acceleration, 1, "The acceleration value for LZ4_comp
 
 DEFINE_uint32(range_lock_variant, 0, "range lock variant"
             "0. Optimal bit-range lock"
-            "1. Customized range lock");
+            "1. Our range lock"
+            "2. Oracle range lock"
+            "3. XiangSong range lock");

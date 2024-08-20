@@ -8,6 +8,8 @@
 
 namespace leanstore::sync {
 
+class HybridGuard;
+
 class HybridLatchMode {
  public:
   static constexpr u64 UNLOCKED   = 0;
@@ -43,6 +45,7 @@ class HybridLatchImpl : public SyncStateClass {
   auto StateAndVersion() -> std::atomic<u64> &;
 
   // Lock utilities
+  auto TryLockExclusive() -> bool;
   auto TryLockExclusive(u64 old_state_w_version) -> bool;
   void LockExclusive();
   void UnlockExclusive();
@@ -54,7 +57,7 @@ class HybridLatchImpl : public SyncStateClass {
   void UnlockShared();
 
  protected:
-  FRIEND_TEST(TestGuard, UpgradeSharedToExclusive);
+  friend class HybridGuard;
 
   // Assertion utilities
   auto IsExclusivelyLatched(u64 v) -> bool { return LockState(v) == SyncStateClass::EXCLUSIVE; }
@@ -66,11 +69,11 @@ class HybridLatchImpl : public SyncStateClass {
 
   // State & Version utilities
   static auto SameVersionNewState(u64 old_state_and_version, u64 new_state) -> u64 {
-    return static_cast<u64>(((old_state_and_version << 8) >> 8) | new_state << 56);
+    return ((old_state_and_version << 8) >> 8) | (new_state << 56);
   }
 
   static auto NextVersionNewState(u64 old_state_and_version, u64 new_state) -> u64 {
-    return static_cast<u64>((((old_state_and_version << 8) >> 8) + 1) | new_state << 56);
+    return (((old_state_and_version << 8) >> 8) + 1) | (new_state << 56);
   }
 
   // the most-significant-8-bits is to store the state info

@@ -37,6 +37,12 @@ auto HybridLatchImpl<SyncStateClass>::StateAndVersion() -> std::atomic<u64> & {
 }
 
 template <class SyncStateClass>
+auto HybridLatchImpl<SyncStateClass>::TryLockExclusive() -> bool {
+  auto old_state_w_version = state_and_version_.load();
+  return TryLockExclusive(old_state_w_version);
+}
+
+template <class SyncStateClass>
 auto HybridLatchImpl<SyncStateClass>::TryLockExclusive(u64 old_state_w_version) -> bool {
   if (LockState(old_state_w_version) > SyncStateClass::UNLOCKED &&
       LockState(old_state_w_version) <= SyncStateClass::EXCLUSIVE) {
@@ -119,8 +125,8 @@ void HybridLatchImpl<SyncStateClass>::UnlockShared() {
     auto old_state_w_version = state_and_version_.load();
     auto old_state           = LockState(old_state_w_version);
     assert(IsSharedLatched(old_state_w_version));
-    if (state_and_version_.compare_exchange_strong(old_state_w_version,
-                                                   SameVersionNewState(old_state_w_version, old_state - 1))) {
+    if (state_and_version_.compare_exchange_weak(old_state_w_version,
+                                                 SameVersionNewState(old_state_w_version, old_state - 1))) {
       break;
     }
   }

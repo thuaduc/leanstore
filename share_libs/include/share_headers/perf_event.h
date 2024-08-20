@@ -75,10 +75,6 @@ struct PerfEvent {
     registerCounter("L1-miss", PERF_TYPE_HW_CACHE,
                     PERF_COUNT_HW_CACHE_L1D | (PERF_COUNT_HW_CACHE_OP_READ << 8) |
                       (PERF_COUNT_HW_CACHE_RESULT_MISS << 16));
-    registerCounter("LLC-r-miss", PERF_TYPE_HW_CACHE,
-                    PERF_COUNT_HW_CACHE_LL | (PERF_COUNT_HW_CACHE_OP_READ << 8) |
-                      (PERF_COUNT_HW_CACHE_RESULT_MISS << 16));
-    registerCounter("LLC-miss", PERF_TYPE_HARDWARE, PERF_COUNT_HW_CACHE_MISSES);
     registerCounter("br-miss", PERF_TYPE_HARDWARE, PERF_COUNT_HW_BRANCH_MISSES);
     registerCounter("task", PERF_TYPE_SOFTWARE, PERF_COUNT_SW_TASK_CLOCK);
     // additional counters can be found in linux/perf_event.h
