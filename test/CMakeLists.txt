@@ -11,6 +11,8 @@ if(ENABLE_TESTING)
 
   leanstore_add_test(TestHybridLatch sync/test_latch.cc main.cc)
   leanstore_add_test(TestHybridGuard sync/test_guard.cc main.cc)
+  leanstore_add_test(TestBench sync/test_bench.cc main.cc)
+  leanstore_add_test(TestScale sync/test_scale.cc main.cc)
   leanstore_add_test(TestPageGuard sync/test_page_guard.cc)
   leanstore_add_test(TestAioInterface storage/test_aio.cc main.cc)
   leanstore_add_test(TestCompression storage/blob/test_compression.cc main.cc)

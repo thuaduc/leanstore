@@ -1,0 +1,40 @@
+lock and unlock immediately
+
+NumThreads: 4
+Threads: 4 average V0 Duration: 0.0746123 seconds
+Threads: 4 average V2 Duration: 0.276628 seconds
+Threads: 4 average V3 Duration: 1.13681 seconds
+NumThreads: 8
+Threads: 8 average V0 Duration: 0.0774681 seconds
+Threads: 8 average V2 Duration: 0.341121 seconds
+Threads: 8 average V3 Duration: 2.04783 seconds
+NumThreads: 12
+Threads: 12 average V0 Duration: 0.0644765 seconds
+Threads: 12 average V2 Duration: 0.319315 seconds
+Threads: 12 average V3 Duration: 2.5029 seconds
+NumThreads: 16
+Threads: 16 average V0 Duration: 0.0621613 seconds
+Threads: 16 average V2 Duration: 0.295677 seconds
+Threads: 16 average V3 Duration: 2.90831 seconds
+NumThreads: 20
+Threads: 20 average V0 Duration: 0.0617625 seconds
+Threads: 20 average V2 Duration: 0.280637 seconds
+Threads: 20 average V3 Duration: 3.28422 seconds
+NumThreads: 24
+Threads: 24 average V0 Duration: 0.0607072 seconds
+Threads: 24 average V2 Duration: 0.261701 seconds
+Threads: 24 average V3 Duration: 3.66585 seconds
+NumThreads: 28
+Threads: 28 average V0 Duration: 0.0604932 seconds
+Threads: 28 average V2 Duration: 0.246694 seconds
+Threads: 28 average V3 Duration: 4.04721 seconds
+NumThreads: 32
+Threads: 32 average V0 Duration: 0.0605629 seconds
+Threads: 32 average V2 Duration: 0.239025 seconds
+Threads: 32 average V3 Duration: 4.4838 seconds
+[       OK ] TestScale.Scale (607794 ms)
+[----------] 1 test from TestScale (607794 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (607794 ms total)
+[  PASSED  ] 1 test.

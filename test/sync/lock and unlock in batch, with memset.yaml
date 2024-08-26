@@ -1,0 +1,36 @@
+lock and unlock in batch, with memset
+
+
+NumThreads: 4
+Threads: 4 average V0 Duration: 0.210477 seconds
+Threads: 4 average V2 Duration: 1.91616 seconds
+Threads: 4 average V3 Duration: 0.299154 seconds
+NumThreads: 8
+Threads: 8 average V0 Duration: 0.184299 seconds
+Threads: 8 average V2 Duration: 1.18003 seconds
+Threads: 8 average V3 Duration: 0.47729 seconds
+NumThreads: 12
+Threads: 12 average V0 Duration: 0.185895 seconds
+Threads: 12 average V2 Duration: 0.848857 seconds
+Threads: 12 average V3 Duration: 0.55585 seconds
+NumThreads: 16
+Threads: 16 average V0 Duration: 0.181139 seconds
+Threads: 16 average V2 Duration: 0.662197 seconds
+Threads: 16 average V3 Duration: 0.670224 seconds
+NumThreads: 20
+Threads: 20 average V0 Duration: 0.174246 seconds
+Threads: 20 average V2 Duration: 0.566159 seconds
+Threads: 20 average V3 Duration: 0.762987 seconds
+NumThreads: 24
+Threads: 24 average V0 Duration: 0.174783 seconds
+Threads: 24 average V2 Duration: 0.518683 seconds
+Threads: 24 average V3 Duration: 0.890025 seconds
+
+NumThreads: 28
+Threads: 28 average V0 Duration: 0.169157 seconds
+Threads: 28 average V2 Duration: 0.407805 seconds
+Threads: 28 average V3 Duration: 0.739353 seconds
+NumThreads: 32
+Threads: 32 average V0 Duration: 0.163858 seconds
+Threads: 32 average V2 Duration: 0.440685 seconds
+Threads: 32 average V3 Duration: 0.998419 seconds

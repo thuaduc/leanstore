@@ -23,8 +23,6 @@ struct ListRL {
     std::atomic<size_t> elementsCount{0};
 
     ListRL() : head(nullptr) {}
-
-    size_t size() { return elementsCount.load(); }
 };
 
 // Range lock structure
@@ -88,22 +86,17 @@ inline bool InsertNode(ListRL *listrl, LNode *lock) {
 }
 
 // Delete node from the list
-inline void DeleteNode(ListRL *listrl, LNode *lock) {
+inline void DeleteNode(LNode *lock) {
     LNode *currentNext = lock->next.load();
     LNode *markedNext =
             reinterpret_cast<LNode *>(reinterpret_cast<uintptr_t>(currentNext) | 1);
     lock->next.store(markedNext);
-    // LOG_INFO("Remove success!");
-    listrl->elementsCount.fetch_sub(1, std::memory_order_relaxed);
 }
 
 // Acquire a range lock
 inline RangeLock *MutexRangeAcquire(ListRL *listrl, uint64_t start, uint64_t end) {
     RangeLock *rl = new RangeLock(new LNode(start, end));
     if (InsertNode(listrl, rl->node)) {
-        // LOG_INFO("Add success!");
-        listrl->elementsCount.fetch_add(1, std::memory_order_relaxed);
-
         return rl;
     }
     // delete rl;
@@ -111,7 +104,7 @@ inline RangeLock *MutexRangeAcquire(ListRL *listrl, uint64_t start, uint64_t end
 }
 
 // Release a range lock
-inline void MutexRangeRelease(ListRL *listrl, RangeLock *rl) { DeleteNode(listrl, rl->node); }
+inline void MutexRangeRelease(RangeLock *rl) { DeleteNode(rl->node); }
 
 // Print the range lock
 inline void printList(ListRL *listrl) {

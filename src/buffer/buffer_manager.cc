@@ -849,7 +849,7 @@ void BufferManager::ReleaseAliasingArea() {
     }
   } else if (FLAGS_range_lock_variant == 2) {
      for (auto &rl : shalas_lk_acquired_v2[worker_thread_id]) {
-      leanstore::MutexRangeRelease(&list_of_rangelock, rl);
+      leanstore::MutexRangeRelease(rl);
     }
   } else {
     for (auto &[start, _] : shalas_lk_acquired_[worker_thread_id]) {

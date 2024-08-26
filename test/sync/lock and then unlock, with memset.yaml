@@ -1,0 +1,57 @@
+lock and then unlock
+
+NumThreads: 4
+Threads: 4 average V2 Duration: 14.9713 seconds
+Threads: 4 average V3 Duration: 1.675 seconds
+NumThreads: 8
+Threads: 8 average V2 Duration: 13.9451 seconds
+Threads: 8 average V3 Duration: 2.56293 seconds
+NumThreads: 12
+Threads: 12 average V2 Duration: 11.1703 seconds
+Threads: 12 average V3 Duration: 2.34869 seconds
+NumThreads: 16
+Threads: 16 average V2 Duration: 10.9563 seconds
+Threads: 16 average V3 Duration: 2.39735 seconds
+NumThreads: 20
+Threads: 20 average V2 Duration: 10.608 seconds
+Threads: 20 average V3 Duration: 2.4599 seconds
+NumThreads: 24
+Threads: 24 average V2 Duration: 10.7544 seconds
+Threads: 24 average V3 Duration: 2.57099 seconds
+NumThreads: 28
+Threads: 28 average V2 Duration: 10.4434 seconds
+Threads: 28 average V3 Duration: 2.66138 seconds
+NumThreads: 32
+Threads: 32 average V2 Duration: 10.1706 seconds
+Threads: 32 average V3 Duration: 2.70708 seconds
+[       OK ] TestScale.Scale (2253773 ms)
+[----------] 1 test from TestScale (2253773 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2253773 ms total)
+[  PASSED  ] 1 test.
+
+
+NumThreads: 4
+Threads: 4 average V0 Duration: 0.00897516 seconds
+NumThreads: 8
+Threads: 8 average V0 Duration: 0.00679223 seconds
+NumThreads: 12
+Threads: 12 average V0 Duration: 0.0073921 seconds
+NumThreads: 16
+Threads: 16 average V0 Duration: 0.00713133 seconds
+NumThreads: 20
+Threads: 20 average V0 Duration: 0.00652828 seconds
+NumThreads: 24
+Threads: 24 average V0 Duration: 0.00658126 seconds
+NumThreads: 28
+Threads: 28 average V0 Duration: 0.00654405 seconds
+NumThreads: 32
+Threads: 32 average V0 Duration: 0.00655407 seconds
+[       OK ] TestScale.Scale (14108 ms)
+[----------] 1 test from TestScale (14108 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (14108 ms total)
+[  PASSED  ] 1 test.
+

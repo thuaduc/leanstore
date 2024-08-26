@@ -21,8 +21,6 @@ namespace leanstore {
 template <typename T, unsigned maxLevel>
 class ConcurrentRangeLock {
    private:
-    std::atomic<size_t> elementsCount{0};
-
     int randomLevel();
 
     bool findInsert(T start, T end, Node<T> **preds, Node<T> **succs);
@@ -41,9 +39,6 @@ class ConcurrentRangeLock {
 
     bool releaseLock(T start, T end);
 
-    size_t size();
-
-    void displayList();
 };
 
 template <typename T, unsigned maxLevel>
@@ -58,11 +53,6 @@ ConcurrentRangeLock<T, maxLevel>::ConcurrentRangeLock() {
     head->initializeHead(min, min, maxLevel, tail);
 
     srand(0);
-}
-
-template <typename T, unsigned maxLevel>
-size_t ConcurrentRangeLock<T, maxLevel>::size() {
-    return elementsCount.load();
 }
 
 template <typename T, unsigned maxLevel>
@@ -235,7 +225,6 @@ bool ConcurrentRangeLock<T, maxLevel>::tryLock(T start, T end) {
                 }
             }
 
-            elementsCount.fetch_add(1, std::memory_order_relaxed);
             return true;
         }
     }
@@ -276,7 +265,6 @@ bool ConcurrentRangeLock<T, maxLevel>::releaseLock(T start, T end) {
                 if (iMarkedIt) {
                     findDelete(start, end);
 
-                    elementsCount.fetch_sub(1, std::memory_order_relaxed);
                     return true;
                 } else if (marked[0]) {
                     std::cerr << "Other thread is trying to release this "
@@ -289,51 +277,4 @@ bool ConcurrentRangeLock<T, maxLevel>::releaseLock(T start, T end) {
     }
 }
 
-template <typename T, unsigned maxLevel>
-void ConcurrentRangeLock<T, maxLevel>::displayList() {
-    std::cout << "Concurrent Range Lock" << std::endl;
-
-    if (this->elementsCount == 0) {
-        std::cout << "List is empty" << std::endl;
-        return;
-    }
-
-    int len = static_cast<int>(this->elementsCount);
-
-    std::vector<std::vector<std::string>> builder(
-        len, std::vector<std::string>(maxLevel + 1));
-
-    Node<T> *current = head->next[0]->getReference();
-
-    bool marked[] = {false};
-
-    for (int i = 0; i < len; ++i) {
-        for (int j = 0; j < maxLevel + 1; ++j) {
-            if (j < current->getTopLevel() + 1) {
-                std::ostringstream oss;
-                oss << "[" << std::setw(2) << std::setfill('0')
-                    << current->getStart() << "," << std::setw(2)
-                    << std::setfill('0') << current->getEnd() << " "
-                    << marked[0] << "]";
-                builder[i][j] = oss.str();
-            } else {
-                builder[i][j] = "---------";
-            }
-        }
-        current = current->next[0]->get(marked);
-    }
-
-    for (int i = maxLevel; i >= 0; --i) {
-        std::cout << "Level " << i << ": head ";
-        for (int j = 0; j < len; ++j) {
-            if (builder[j][i] == "---------") {
-                std::cout << "---------";
-            } else {
-                std::cout << "->" << builder[j][i];
-            }
-        }
-        std::cout << "---> tail" << std::endl;
-    }
 }
-
-}  // namespace leanstore
